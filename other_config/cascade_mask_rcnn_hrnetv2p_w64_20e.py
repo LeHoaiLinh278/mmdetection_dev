@@ -2,7 +2,7 @@
 model = dict(
     type='CascadeRCNN',
     num_stages=3,
-    pretrained='hrnetv2_pretrained/hrnetv2_w64_imagenet_pretrained.pth',
+    pretrained='hrnetv2_pretrained/hrnetv2_w64_imagenet_pretrained.pth', #load path pretrained
     backbone=dict(
         type='HRNet',
         extra=dict(
