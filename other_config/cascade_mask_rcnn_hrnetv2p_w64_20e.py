@@ -1,18 +1,10 @@
 # model settings
-norm_cfg = dict(type='SyncBN', requires_grad=True)
-
 model = dict(
     type='CascadeRCNN',
     num_stages=3,
     pretrained='hrnetv2_pretrained/hrnetv2_w64_imagenet_pretrained.pth',
     backbone=dict(
         type='HRNet',
-        dcn=dict(type='DCN', deformable_groups=1, fallback_on_stride=False),
-        stage_with_dcn=(False, True, True, True),
-        gcb=dict(ratio=1. / 16., ),
-        stage_with_gcb=(False, True, True, True),
-        norm_eval=False,
-        norm_cfg=norm_cfg,
         extra=dict(
             stage1=dict(
                 num_modules=1,
