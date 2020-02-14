@@ -11,7 +11,7 @@ from mmcv.runner import load_checkpoint
 from mmdet.core import get_classes
 from mmdet.datasets.pipelines import Compose
 from mmdet.models import build_detector
-
+from my_code.save_file_json import save_json
 
 def init_detector(config, checkpoint=None, device='cuda:0'):
     """Initialize a detector from config file.
@@ -168,6 +168,7 @@ def show_result(img,
             mask = maskUtils.decode(segms[i]).astype(np.bool)
             img[mask] = img[mask] * 0.5 + color_mask * 0.5
     # draw bounding boxes
+    save_json(img, bboxes, segm_result, labels, class_names, score_thr, out_file=out_file)
     mmcv.imshow_det_bboxes(
         img,
         bboxes,
