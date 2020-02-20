@@ -141,6 +141,7 @@ def show_result(img,
             visualized image is returned, otherwise None is returned.
     """
     assert isinstance(class_names, (tuple, list))
+    path_img = img
     img = mmcv.imread(img)
     img = img.copy()
     if isinstance(result, tuple):
@@ -169,6 +170,7 @@ def show_result(img,
             img[mask] = img[mask] * 0.5 + color_mask * 0.5
     # draw bounding boxes
     save_json(img, bboxes, segm_result, labels, class_names, score_thr, out_file=out_file)
+    #save_json(path_img, bboxes, segm_result, labels, class_names, score_thr, format_file='labelme', out_file=out_file)  #save json v2
     mmcv.imshow_det_bboxes(
         img,
         bboxes,
